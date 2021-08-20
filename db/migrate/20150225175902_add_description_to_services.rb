@@ -1,4 +1,4 @@
-class AddDescriptionToServices < ActiveRecord::Migration[4.2]
+class AddDescriptionToServices < ActiveRecord::Migration
   def change
     add_column :services, :description, :text
   end

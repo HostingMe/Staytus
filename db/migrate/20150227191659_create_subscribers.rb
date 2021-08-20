@@ -1,4 +1,4 @@
-class CreateSubscribers < ActiveRecord::Migration[4.2]
+class CreateSubscribers < ActiveRecord::Migration
   def change
     create_table :subscribers do |t|
       t.string :email_address, :verification_token

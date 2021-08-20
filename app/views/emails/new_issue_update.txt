@@ -1,12 +1,13 @@
-# An issue has been updated on {{site.title}}
+## [{{update.state.humanize}}] {{issue.title}}
 
-Full details can be seen below. We will continue to post updates whenever they become available.
+{{update.text}}
 
-[View on the status site]({{site.domain_with_protocol}}/issue/{{issue.identifier}}#{{update.identifier}})
+- - -
 
-## {{issue.title}}
+**Issue created:** {{issue.created_at}}
 
-* **Posted at:** {{issue.created_at}}
-* **Affected services:** {{issue.services.to_sentence | No specific services}}
+- - -
 
-**{{update.state.capitalize}}** - {{update.text}}
+**Affected services:** {{issue.services.to_sentence | No specific services}}<br><br>
+[View the notice ->]({{site.domain_with_protocol}}/issue/{{issue.identifier}}#{{update.identifier}})
+- - -

@@ -9,26 +9,20 @@ any organization with customers that rely on them to be online 24/7.
 * [Read the roadmap](https://github.com/adamcooke/staytus/blob/master/ROADMAP.md)
 * [Report a bug](https://github.com/adamcooke/staytus/issues/new?labels=bug)
 * [Ask a question](https://github.com/adamcooke/staytus/issues/new?labels=question)
-* [Installation tutorial](https://atech.blog/atech/install-staytus-tutorial)
 
-![Screenshot](https://share.adam.ac/21/Screen-Shot-2021-08-04-21-41-55.10-lVqxpjoN4AdYmGEOiC.png)
+![Screenshot](https://s.adamcooke.io/15/iOzvtk.png)
 
 ## Installation from source
 
 ### System Requirements
 
-* Ruby 2.3 or greater (including `ruby-dev` package on Linux)
+* Ruby 2.1 or greater
 * RubyGems and Bundler
 * A MySQL database server
 * Bundler (`gem install bundler`)
-* Rake (`gem install rake`)
 * Procodile (`gem install procodile`)
 
-### Installation Instructions
-
-**A comprehensive tutorial about how to install Staytus [available here](https://atech.blog/atech/install-staytus-tutorial) on the [aTech Media blog](https://atech.blog).**
-
-Alternativly, these basic instructions will get you up and running:
+### Instructions
 
 Before start, you'll need to create a new MySQL database:
 
@@ -47,8 +41,6 @@ $ nano -w config/database.yml # Add your database configuration
 $ bundle exec rake staytus:build staytus:install
 $ procodile start --foreground
 ```
-
-In case the `bundle install` command fails at `mysql2`, make sure that you have the MySQL development package (ie. `mysql` on macOS, `libmariadb-dev` for MariaDB on Linux)
 
 This will run the application on HTTP port 5000. When you first
 login, you'll be able to add your own site settings. Browse to http://[IP]:8787
@@ -93,10 +85,10 @@ overridden in an upgrade.
 
 Full details about how to make these will be coming soon.
 
-## Examples in the wild
+## Examples in the wild
 
-* [aTech Status Site](https://status.atechmedia.com)
-* [Dial 9 Status Site](https://status.dial9.co.uk)
+* [Viaduct Status Site](http://status.viaduct.io)
+* [Dial 9 Status Site](http://status.dial9.co.uk)
 
 If you're running Staytus in the wild, let us know so we can
 add you to the list.

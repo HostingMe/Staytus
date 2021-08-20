@@ -1,4 +1,4 @@
-class StoreActualCloseTimeOnMaintenance < ActiveRecord::Migration[4.2]
+class StoreActualCloseTimeOnMaintenance < ActiveRecord::Migration
   def change
     remove_column :maintenances, :closed
     add_column :maintenances, :closed_at, :datetime

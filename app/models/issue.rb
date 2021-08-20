@@ -6,12 +6,12 @@
 #  title             :string(255)
 #  state             :string(255)
 #  service_status_id :integer
-#  all_services      :boolean          default(TRUE)
+#  all_services      :boolean          default("1")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  user_id           :integer
 #  identifier        :string(255)
-#  notify            :boolean          default(FALSE)
+#  notify            :boolean          default("0")
 #
 
 class Issue < ActiveRecord::Base
@@ -72,7 +72,7 @@ class Issue < ActiveRecord::Base
   end
 
   def update_service_statuses
-    if self.saved_change_to_service_status_id?
+    if self.service_status_id_changed?
       self.services.each do |service|
         service.status = self.service_status
         service.save
@@ -80,12 +80,8 @@ class Issue < ActiveRecord::Base
     end
   end
 
-  def subscribers
-    @subscribers ||= Subscriber.for_services(service_ids)
-  end
-
   def send_notifications
-    for subscriber in subscribers
+    for subscriber in Subscriber.verified
       Staytus::Email.deliver(subscriber, :new_issue, :issue => self, :update => self.updates.order(:id).first)
     end
   end

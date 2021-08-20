@@ -10,7 +10,7 @@
   %body
     %section.globalSidebar
       .globalSidebar__version v#{Staytus::Config.version}
-      = link_to "Staytus", "http://staytus.co", :class => 'globalSidebar__logo'
+      = link_to "Hosting Me", "https://hostingme.co.uk", :class => 'globalSidebar__logo'
       - if has_site?
         %ul.globalSidebar__nav
           %li= link_to "Dashboard", admin_root_path, :class => (@active_nav_item == :dashboard ? 'active' : '')

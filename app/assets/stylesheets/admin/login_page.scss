@@ -1,7 +1,7 @@
 @import 'admin/variables';
 
 .loginPage {
-  background:$red;
+  background:$hmBlue;
   .flashMessage--alert {
     background:#000;
   }
@@ -15,9 +15,9 @@
   width:300px;
   margin:auto;
   text-align:center;
-  background:image-url('logo-white.svg') no-repeat center 0;
-  background-size:200px;
-  padding-top:100px;
+  background:image-url("logo-white.png") no-repeat center 0;
+  background-size:300px;
+  padding-top:120px;
 }
 
 .loginInput {

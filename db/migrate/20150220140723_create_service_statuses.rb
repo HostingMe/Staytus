@@ -1,4 +1,4 @@
-class CreateServiceStatuses < ActiveRecord::Migration[4.2]
+class CreateServiceStatuses < ActiveRecord::Migration
   def change
     create_table :service_statuses do |t|
       t.string :name, :permalink, :color, :status_type

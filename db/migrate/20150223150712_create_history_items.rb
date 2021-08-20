@@ -1,4 +1,4 @@
-class CreateHistoryItems < ActiveRecord::Migration[4.2]
+class CreateHistoryItems < ActiveRecord::Migration
   def change
     create_table :history_items do |t|
       t.string :item_type

@@ -1,4 +1,4 @@
-class CreateIssues < ActiveRecord::Migration[4.2]
+class CreateIssues < ActiveRecord::Migration
   def change
     create_table :issues do |t|
       t.string :title, :state

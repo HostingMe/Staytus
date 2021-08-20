@@ -1,9 +1,9 @@
 - @active_nav_item = :dashboard
 - @page_title = 'Welcome'
 = content_for :page_header do
-  %h1.pageHeader__heading.u-margin Welcome to Staytus.
+  %h1.pageHeader__heading.u-margin Welcome to My Status.
   %p.u-intro
-    Staytus is your service status site which allows you to easily
+    My Status is your service status site which allows you to easily
     communicate with your customers whenever anything goes awry within your
     network.
 
@@ -21,13 +21,8 @@
       Schedule maintenance
 
 .poweredBy
-  %ul.poweredBy__nav
-    %li= link_to "Homepage", "http://staytus.co", :class => 'u-underline'
-    %li= link_to "Repository", "http://staytus.co/repo", :class => 'u-underline'
-    %li= link_to "Report a bug", "http://staytus.co/bug", :class => 'u-underline'
-    %li= link_to "Donate", "http://staytus.co/donate", :class => 'u-underline'
   .poweredBy__text
-    %p Powered by #{link_to 'Staytus', 'http://staytus.co', :class => 'u-underline'} &mdash; the open source status site.
+    %p Powered by #{link_to 'My Status', 'https://hostingme.co.uk', :class => 'u-underline'} &mdash; the open source status site.
     %p
-      UI designs, logomarks and code &copy; 2015 The Staytus Core Team.
+      UI designs, logomarks and code &copy; 2021 Hosting Me.
       Released under the MIT-License.

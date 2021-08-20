@@ -9,15 +9,13 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  identifier     :string(255)
-#  notify         :boolean          default(FALSE)
+#  notify         :boolean          default("0")
 #
 
 class MaintenanceUpdate < ActiveRecord::Base
 
   belongs_to :maintenance, :touch => true
   belongs_to :user
-
-  delegate :subscribers, to: :maintenance
 
   validates :text, :presence => true
 
@@ -35,7 +33,7 @@ class MaintenanceUpdate < ActiveRecord::Base
   end
 
   def send_notifications
-    for subscriber in subscribers
+    for subscriber in Subscriber.verified
       Staytus::Email.deliver(subscriber, :new_maintenance_update, :maintenance => self.maintenance, :update => self)
     end
   end

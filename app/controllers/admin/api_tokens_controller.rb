@@ -1,6 +1,6 @@
 class Admin::ApiTokensController < Admin::BaseController
 
-  before_action { params[:id] && @api_token = ApiToken.find(params[:id]) }
+  before_filter { params[:id] && @api_token = ApiToken.find(params[:id]) }
 
   def index
     @api_tokens = ApiToken.ordered
@@ -38,7 +38,7 @@ class Admin::ApiTokensController < Admin::BaseController
   private
 
   def safe_params
-    params.require(:api_token).permit(:name)
+    params.require(:api_token).permit(:auto)
   end
 
 end

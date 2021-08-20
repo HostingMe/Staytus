@@ -1,4 +1,4 @@
-class CreateMaintenanceUpdates < ActiveRecord::Migration[4.2]
+class CreateMaintenanceUpdates < ActiveRecord::Migration
   def change
     create_table :maintenance_updates do |t|
       t.integer :maintenance_id, :user_id

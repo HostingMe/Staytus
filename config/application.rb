@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Staytus
   class Application < Rails::Application
-    config.eager_load_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib)
     config.generators do |g|
       g.orm             :active_record
       g.test_framework  false
@@ -17,5 +17,6 @@ module Staytus
       g.helper          false
     end
     config.i18n.load_path += Dir[Rails.root.join('content', 'locales', '*.{rb,yml}').to_s]
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
