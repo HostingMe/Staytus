@@ -1,0 +1,14 @@
+## [{{maintenance.status.humanize}}] {{maintenance.title}}
+
+{{update.text}}
+
+- - -
+
+**Date:** {{maintenance.start_at}}<br>
+**Duration:** {{maintenance.duration}}<br>
+
+- - -
+
+**Affected services:** {{maintenance.services.to_sentence | No specific services}}<br><br>
+[View the notice ->]({{site.domain_with_protocol}}/maintenance/{{maintenance.identifier}})
+- - -

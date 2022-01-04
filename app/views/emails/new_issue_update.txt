@@ -1,0 +1,13 @@
+## [{{update.state.humanize}}] {{issue.title}}
+
+{{update.text}}
+
+- - -
+
+**Issue created:** {{issue.created_at}}
+
+- - -
+
+**Affected services:** {{issue.services.to_sentence | No specific services}}<br><br>
+[View the notice ->]({{site.domain_with_protocol}}/issue/{{issue.identifier}}#{{update.identifier}})
+- - -

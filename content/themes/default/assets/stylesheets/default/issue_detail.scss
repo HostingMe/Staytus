@@ -1,0 +1,110 @@
+.issueDetail {
+  overflow: hidden;
+}
+
+.issueDetail__title {
+  font-size:50px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  line-height:38px;
+  margin-bottom:7px;
+  text-align:center;
+  margin-top:80px;
+}
+
+.issueDetail__date {
+  font-size:14px;
+  color:#999;
+  margin-top:20px;
+  margin-bottom:60px;
+  text-align:center;
+}
+
+.issueDetail__descriptionTitle {
+  font-weight:700;
+  margin-bottom:15px;
+  margin-top:50px;
+}
+
+.issueDetail__description {
+  line-height:24px;
+  margin-bottom:25px;
+}
+
+.issueDetail__details {
+  line-height:24px;
+  margin-bottom:40px;
+  dt { font-weight:700; margin-bottom:15px; float:left; width:40%;}
+  dd { margin-bottom:15px; }
+  dd:last-child { margin-bottom:0; }
+}
+
+.issueDetail__services {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px dashed #ddd;
+  p {
+    margin-bottom:5px;
+  }
+  p.issueDetail__services__inline {
+    font-weight: 600;
+    margin-top: 25px;
+  }
+  ul {
+    display: inline-block;
+    margin-top: 15px;
+  }
+  li {
+    display:inline-block;
+  }
+  li:first-child:before {
+  content: " ";
+  }
+  li:after {
+  content: ", ";
+  }
+  li:last-child:after {
+    content: "";
+  }
+}
+.issueDetail__table-spacing {
+  width: 150px;
+}
+@media (max-width: 750px) {
+  .issueDetail__services {
+    float:none;
+    width:100%;
+    margin-left:0;
+    margin-bottom:25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .issueDetail__details {
+    dt {
+      float:none;
+      width:100%;
+      margin-bottom:10px;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .issueDetail__title {
+    font-size:25px;
+    line-height:30px;
+  }
+}
+.maintenace__inline {
+  display: inline-flex;
+  li::after {
+  content: ', ';
+  white-space: pre;
+  }
+  li:last-child:after {
+    content: "";
+  }
+}
+.issueDetail__detailsRecap {
+  margin-top:80px;
+}
