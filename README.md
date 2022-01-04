@@ -5,104 +5,100 @@ any issues with your web applications, networks or services. Along with
 absolutely beautiful public & admin interfaces, Staytus is a powerful tool for
 any organization with customers that rely on them to be online 24/7.
 
-* [Check out the live demo](http://demo.staytus.co)
-* [Read the roadmap](https://github.com/adamcooke/staytus/blob/master/ROADMAP.md)
-* [Report a bug](https://github.com/adamcooke/staytus/issues/new?labels=bug)
-* [Ask a question](https://github.com/adamcooke/staytus/issues/new?labels=question)
+## Docker installation
 
-![Screenshot](https://s.adamcooke.io/15/iOzvtk.png)
+Before you start, you'll need a server running Docker. 
+Learn more on how to install Docker on their website: https://docs.docker.com/get-docker/
 
-## Installation from source
-
-### System Requirements
-
-* Ruby 2.1 or greater
-* RubyGems and Bundler
-* A MySQL database server
-* Bundler (`gem install bundler`)
-* Procodile (`gem install procodile`)
-
-### Instructions
-
-Before start, you'll need to create a new MySQL database:
-
+First pull the image of Staytus to your server using...
 ```text
-mysql$ CREATE DATABASE `staytus` CHARSET utf8 COLLATE utf8_unicode_ci;
-mysql$ GRANT ALL ON staytus.* TO `staytus`@`localhost` IDENTIFIED BY "a_secure_password";
+docker pull hostingme/staytus:latest
 ```
 
+Next we'll need to create a network so Staytus and the database can communicate...
 ```text
-$ git clone https://github.com/adamcooke/staytus
-$ cd staytus
-$ git checkout stable
-$ bundle install --deployment --without development:test
-$ cp config/database.example.yml config/database.yml
-$ nano -w config/database.yml # Add your database configuration
-$ bundle exec rake staytus:build staytus:install
-$ procodile start --foreground
+docker network create staytus
 ```
 
-This will run the application on HTTP port 5000. When you first
-login, you'll be able to add your own site settings. Browse to http://[IP]:8787
-to begin.
-
-You may also want to change the SMTP configuration via environment variables,
-which are described in [`config/environment.example.yml`](config/environment.example.yml).
-
-To run staytus in the background, simply run `procodile start` without the `--foreground` option.
-
-### Upgrading
-
-Once you've installed Staytus, you can easily upgrade it by
-following this process.
-
+Now we can create the database container. We're going to be using MariaDB for this...
 ```text
-$ cd path/to/staytus
-$ git pull origin stable
-$ bundle
-$ bundle exec rake staytus:build staytus:upgrade
+docker run \
+    -d \
+    --name=database \
+    --net=staytus \
+    -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+    -e MYSQL_DATABASE=staytus \
+    -e MYSQL_USER=staytus \
+    -e MYSQL_PASSWORD=staytus \
+    mariadb:10.4.4-bionic
 ```
 
-Once you've done this, you should ensure you restart any Staytus
-processes which you have running.
+Lastly we can start the Staytus container with the following environments variables...
+```text
+docker run \
+    -d \
+    --name=staytus \
+    --net=staytus \
+    -p 0.0.0.0:80:8787 \
+    -e 'DB_HOST=database' \
+    -e 'DB_USER=staytus' \
+    -e 'DB_PASSWORD=staytus' \
+    hostingme/staytus:latest
+```
 
-## E-Mail Notifications
+That's it. Now you can visit your Staytus page typing `YOUR_SERVER_IP` into a web browser.
 
-All e-mail notifications are sent through a background worker process. This will be started automatically when you run the application using `foreman start`. If you don't do this, you can run jobs using `bundle exec rake jobs:work`.
+## How to use a domain name instead of server IP
+Create an `A Record` for the domain or sub-doamin and point it to the IP address of the server.
 
-## Administration
+## How to add SSL 
+We're going to be using <a href="https://caddyserver.com">Caddy</a> to setup a basic web server which automatically adds HTTPS via <a href="https://letsencrypt.org">Let's Encrypt</a>.
 
-To log in for the first time, visit the `/admin`, and log in with email
-`admin@example.com` and password `password`. You will probably want to go to
-Settings -> Users and set up your admins.
+In order to run our Staytus container over HTTPS we need to change the ports our Staytus container is listening on. To do this we'll need to stop and remove the excisting running container. To do this follow these steps...
+```text
+docker stop staytus
+docker rm staytus
+```
 
-## Themes
+Now that we have stopped and removed the container we can rebuild it using the updated ports...
+```text
+docker run \
+    -d \
+    --name=staytus \
+    --net=staytus \
+    -p 8787:8787 \
+    -e 'DB_HOST=database' \
+    -e 'DB_USER=staytus' \
+    -e 'DB_PASSWORD=staytus' \
+    hostingme/staytus:latest
+```
 
-All themes are stored in the `content/themes` directory. You can
-add your own themes in this directory but we do not recommend
-making changes to the `default` theme as these changes may get
-overridden in an upgrade.
+Next we need to build the Caddy containter. This is done in a very similar way to how we build the Staytus container however we need to provide Caddy with some configuration files so it knows what to do.
 
-Full details about how to make these will be coming soon.
+First, create a `Caddyfile` at `/opt/staytus/Caddyfile` and copy the below into it. Make sure you change the domain (example.com) to your domain name.
+  
+```text
+ example.com {
+    reverse_proxy staytus:8787
+}
+```
 
-## Examples in the wild
+Lets also create a directory where Caddy can store its data. We've called it `caddy-data` and it can be found at `/opt/staytus/caddy-data`
+  
+With the above config files created we can build our Caddy container.
 
-* [Viaduct Status Site](http://status.viaduct.io)
-* [Dial 9 Status Site](http://status.dial9.co.uk)
+```text
+docker run -d --name caddy \
+    -p 80:80 \
+    -p 443:443 \
+    -v /opt/staytus/Caddyfile:/etc/caddy/Caddyfile \
+    -v /opt/staytus/caddy-data:/data \
+    caddy
+```
 
-If you're running Staytus in the wild, let us know so we can
-add you to the list.
-
-## Screenshots
-
-Here's a few extra screenshots from the admin and public interfaces.
-
-![Screenshot](https://s.adamcooke.io/15/SZ2WUI.png)
-
-![Screenshot](https://s.adamcooke.io/15/TgqeV8.png)
-
-![Screenshot](https://s.adamcooke.io/15/JErXE75Fhu.png)
-
-![Screenshot](https://s.adamcooke.io/15/fb5kFe.png)
-
-![Screenshot](https://s.adamcooke.io/15/9n5W4j.png)
+Finally we need to create a new Docker network and connect it to our Caddy and Staytus containers so they can communicate with eachother. Run the following command...
+```text
+docker network create caddy
+docker network connect caddy staytus
+docker network connect caddy caddy
+```
