@@ -5,6 +5,9 @@ any issues with your web applications, networks or services. Along with
 absolutely beautiful public & admin interfaces, Staytus is a powerful tool for
 any organization with customers that rely on them to be online 24/7.
 
+App: https://github.com/adamcooke/staytus <br>
+Dockerfile: https://github.com/galexrt/container-staytus
+
 ## Docker installation
 
 Before you start, you'll need a server running Docker. 
