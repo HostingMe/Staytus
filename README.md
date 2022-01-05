@@ -12,7 +12,7 @@ Learn more on how to install Docker on their website: https://docs.docker.com/ge
 
 First pull the image of Staytus to your server using...
 ```text
-docker pull hostingme/staytus:latest
+docker pull hostingme/staytus:main
 ```
 
 Next we'll need to create a network so Staytus and the database can communicate...
