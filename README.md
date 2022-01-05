@@ -43,7 +43,7 @@ docker run \
     -e 'DB_HOST=database' \
     -e 'DB_USER=staytus' \
     -e 'DB_PASSWORD=staytus' \
-    hostingme/staytus:latest
+    hostingme/staytus:main
 ```
 
 That's it. Now you can visit your Staytus page typing `YOUR_SERVER_IP` into a web browser.
@@ -70,7 +70,7 @@ docker run \
     -e 'DB_HOST=database' \
     -e 'DB_USER=staytus' \
     -e 'DB_PASSWORD=staytus' \
-    hostingme/staytus:latest
+    hostingme/staytus:main
 ```
 
 Next we need to build the Caddy containter. This is done in a very similar way to how we build the Staytus container however we need to provide Caddy with some configuration files so it knows what to do.
