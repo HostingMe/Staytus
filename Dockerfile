@@ -40,7 +40,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 USER staytus
 
-RUN git clone https://github.com/adamcooke/staytus.git /opt/staytus/staytus && \
+RUN git clone https://github.com/HostingMe/Staytus.git /opt/staytus/staytus && \
     cd /opt/staytus/staytus && \
     git checkout "${STAYTUS_VERSION}" && \
     bundle install --deployment --without development:test
