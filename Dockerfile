@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 ARG BUILD_DATE="N/A"
 ARG REVISION="N/A"
 
-ARG STAYTUS_VERSION="mail"
+ARG STAYTUS_VERSION="main"
 ARG TZ="UTC"
 
 LABEL org.opencontainers.image.authors="Hosting Me <hello@hostingme.co.uk>" \
