@@ -24,7 +24,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini && \
     apt-get -q update && \
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y tzdata ruby ruby-dev ruby-json \
-        nodejs git build-essential libmysqlclient-dev mysql-client && \
+        nodejs git build-essential libmysqlclient-dev mysql-client sendmail && \
     ln -fs "/usr/share/zoneinfo/${TZ}" /etc/localtime && \
     gem update --system && \
     gem install bundler:1.13.6 procodile json:1.8.3 && \
