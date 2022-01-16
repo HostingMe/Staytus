@@ -1,6 +1,5 @@
 <% @page_title = "#{@maintenance.title} - #{@maintenance.start_at.strftime("%d/%m/%Y")}" %>
-<%= render 'page_header' %>
-
+<img class="issueDetail__app_logo" src="https://www.hostingme.co.uk/img/logos/app-icon.png" alt="Hosting Me" width="84" height="84">
 <h1 class='issueDetail__title'><%= @maintenance.title %></h1>
 <p class='issueDetail__date'>Scheduled for <%= @maintenance.start_at.strftime("%A #{@maintenance.start_at.day.ordinalize} %B %Y at %H:%M (#{site.time_zone})") %></p>
 

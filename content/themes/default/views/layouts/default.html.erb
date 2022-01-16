@@ -18,8 +18,12 @@
 
   <footer class='siteFooter'>
     <div class='container'>
-
-      <ul class='siteFooter__nav'>
+      <% unless current_page?(root_path) %>
+        <ul class='siteFooter__nav'>
+          <li><a href='/'>&#8592; Status overview</a></li>
+        </ul>
+      <% end %>
+      <ul class='siteFooter__nav' style='float:right'>
         <li><a href='/history'><%= t("themes.default.footer.history", :default => 'History') %></a></li>
         <li><a href='<%= site.website_url %>'><%= t("themes.default.footer.homepage", :default => 'Our Homepage') %></a></li>
         <li><a href='mailto:<%= site.support_email %>'><%= t("themes.default.footer.contact_us", :default => 'Contact Us') %></a></li>

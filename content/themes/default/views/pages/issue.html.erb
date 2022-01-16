@@ -1,6 +1,5 @@
 <% @page_title = "#{@issue.title} - #{@issue.created_at.strftime("%d/%m/%Y")}" %>
-<%= render 'page_header' %>
-
+  <img class="issueDetail__app_logo" src="https://www.hostingme.co.uk/img/logos/app-icon.png" alt="Hosting Me" width="84" height="84">
   <h1 class='issueDetail__title'><%= @issue.title %></h1>
   <p class='issueDetail__date'>Opened on <%= @issue.created_at.strftime("%A #{@issue.created_at.day.ordinalize} %B %Y") %>, last updated <%= time_tag @issue.updated_at %></p>
 
