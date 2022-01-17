@@ -9,6 +9,15 @@
   margin-bottom:7px;
 }
 
+.subscribePage__header {
+  position:relative;
+  height: 35vh;
+  text-align:center;
+  background:linear-gradient(180deg,#3570e6 0,#164adb 100%);
+  padding:150px 0 60px 0;
+  margin-bottom:50px;
+}
+
 .subscribePage__info {
   font-size:14px;
   color:#999;
@@ -17,21 +26,24 @@
 }
 
 .subscribePage__box {
-  border-radius:10px;
-  padding:20px;
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius:50px;
+  padding:60px;
   box-shadow: 0 8px 32px 0 rgba(0,0,0,.1);
+  width: 500px;
+  background: #fff;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.subscribePage__subHeading {
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:4px;
-}
-
-.subscribePage__subInfo {
-  font-size:13px;
-  color:#999;
-  margin-bottom:15px;
+.subscribePage__icon {
+  font-size: 52px;
+  margin-bottom: 12px;
 }
 
 .subscribePage__input {
@@ -43,7 +55,7 @@
   display:inline-block;
   border-radius:4px;
   border:1px solid #ddd;
-  font-family:$sansSerifFont;
+  font-family:Montserrat;
   &:focus {
     border-color:#aaa;
   }
@@ -52,6 +64,9 @@
 @media (max-width: 600px) {
   .subscribePage__heading {
     font-size:29px;
+  }
+  .subscribePage__box {
+    width:90vw;
   }
 }
 
@@ -62,4 +77,26 @@
   .subscribePage__info {
     margin-bottom:25px;
   }
+}
+.subscribePage__input {
+  width:100%;
+  height:52px;
+  border-radius:8px;
+  margin-top:40px;
+  margin-bottom:15px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.subscribePage__submit {
+  width:100%;
+  background:#3570e6;
+  border-radius:8px;
+  border:none;
+  color:#fff;
+  height:42px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.subscribePage__blank {
+  height:200px;
 }
