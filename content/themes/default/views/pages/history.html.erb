@@ -1,4 +1,5 @@
 <% @page_title = "History" %>
+<img class="issueDetail__app_logo" src="https://www.hostingme.co.uk/img/logos/app-icon.png" alt="Hosting Me" width="84" height="84">
 
 <section class='history'>
   <div class='container'>
@@ -13,8 +14,9 @@
       <div class='history__item'>
 
         <p class='history__itemTitle'>
-          <%= item.type.capitalize %> | 
-          <a href='<%= item.link %>'><%= item.title %></a>
+
+
+          <a href='<%= item.link %>'>[<%= item.type.capitalize %>] <%= item.title %></a>
           <span class='history__itemDate'> from <%= item.date.to_date.to_s(:long) %></span>
         </p>
       </div>
