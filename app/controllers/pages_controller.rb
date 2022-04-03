@@ -48,13 +48,13 @@ class PagesController < ApplicationController
     end
   end
 
-  before_action :check_whether_subscriptions_are_enabled, :only => [:subscribe, :subscribe_by_email]
+  before_filter :check_whether_subscriptions_are_enabled, :only => [:subscribe, :subscribe_by_email]
 
   def subscribe
   end
 
   def subscribe_by_email
-    @subscriber = Subscriber.new(:email_address => params[:email_address], :service_ids => params[:service_ids])
+    @subscriber = Subscriber.new(:email_address => params[:email_address])
     if @subscriber.save
       @subscriber.send_verification_email
       redirect_to root_path, :notice => "Thanks - please check your email and click the link within to confirm your subscription."
