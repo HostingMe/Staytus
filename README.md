@@ -108,7 +108,7 @@ docker network connect caddy caddy
 ## Starting containers automatically
 You can use docker <a href="https://docs.docker.com/config/containers/start-containers-automatically/" target="_blank">restart policies</a> to control whether your containers start automatically when they exit, or when server restarts.
 ```text
-docker run -d --restart unless-stopped database
-docker run -d --restart unless-stopped caddy
-docker run -d --restart unless-stopped staytus
+docker update --restart unless-stopped database
+docker update --restart unless-stopped caddy
+docker update --restart unless-stopped staytus
 ```
