@@ -28,20 +28,40 @@
       <% end %>
     </div>
     <div class="issueDetail__detailsRecap">
-      <dl class='issueDetail__details'>
-        <dt>Issue reported</dt>
-        <dd><%= @issue.created_at.strftime("%A #{@issue.created_at.day.ordinalize} %B %Y") %></dd>
-        <dt>Last updated</dt>
-        <dd><%= time_tag @issue.updated_at %></dd>
-        <% unless @issue.services.empty? %>
-        <dt>Affected services</dt>
-        <dd><ul class="maintenace__inline">
-          <% @issue.services.each do |service| %>
-          <li><%= service.name %></li>
+      <table class='issueUpdates__text'>
+        <tbody>
+          <tr>
+            <td class="issueDetail__table-spacing">
+              <b class='issueUpdate__state'>Issue reported</b>
+            </td>
+            <td>
+              <%= @issue.created_at.strftime("%A #{@issue.created_at.day.ordinalize} %B %Y") %>
+            </td>
+          </tr>
+          <tr>
+            <td class="issueDetail__table-spacing">
+              <b class='issueUpdate__state'>Last updated</b>
+            </td>
+            <td>
+              <%= time_tag @issue.updated_at %>
+            </td>
+          </tr>
+          <% unless @issue.services.empty? %>
+            <tr>
+              <td class="issueDetail__table-spacing">
+                <b class='issueUpdate__state'>Affected services</b>
+              </td>
+              <td>
+                <ul class="maintenace__inline">
+                  <% @issue.services.each do |service| %>
+                  <li><%= service.name %></li>
+                  <% end %>
+                </ul>
+              </td>
+            </tr>
           <% end %>
-        </ul></dd>
-        <% end %>
-      </dl>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
