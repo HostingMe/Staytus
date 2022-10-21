@@ -30,7 +30,7 @@
     <div class="issueDetail__detailsRecap">
       <table class='issueUpdates__text'>
         <tbody>
-          <tr>
+          <tr height="50">
             <td class="issueDetail__table-spacing">
               <b class='issueUpdate__state'>Issue reported</b>
             </td>
@@ -38,7 +38,7 @@
               <%= @issue.created_at.strftime("%A #{@issue.created_at.day.ordinalize} %B %Y") %>
             </td>
           </tr>
-          <tr>
+          <tr height="50">
             <td class="issueDetail__table-spacing">
               <b class='issueUpdate__state'>Last updated</b>
             </td>
@@ -47,9 +47,9 @@
             </td>
           </tr>
           <% unless @issue.services.empty? %>
-            <tr>
+            <tr height="50">
               <td class="issueDetail__table-spacing">
-                <b class='issueUpdate__state'>Affected services</b>
+                <b class='issueUpdate__state'>Affected <br>services</b>
               </td>
               <td>
                 <ul class="maintenace__inline">
