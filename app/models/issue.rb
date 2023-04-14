@@ -19,7 +19,7 @@ class Issue < ActiveRecord::Base
   attr_accessor :initial_update
   INITIAL_UPDATE_TEXT = "We're currently aware of the issue and are investigating the cause. We will provide further updates as we have them."
 
-  STATES = ['investigating', 'identified', 'monitoring', 'resolved']
+  STATES = ['investigating', 'identified', 'monitoring', 'resolved', 'reason']
 
   validates :title, :presence => true
   validates :state, :inclusion => {:in => STATES}

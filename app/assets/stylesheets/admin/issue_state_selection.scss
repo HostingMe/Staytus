@@ -12,6 +12,11 @@
   font-weight:bold;
 }
 
+.issueStateSelection__item:last-child {
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+
 .issueStateSelection__item + .issueStateSelection__item {
   border-left: 1px solid #ccc;
 }
@@ -39,8 +44,11 @@ $issueStates: (
   resolved: (
     background: #ccc,
     foreground: #666
+  ),
+  reason: (
+    background: #ddd, 
+    foreground: #d6068f 
   )
-
 );
 
 @each $name, $palette in $issueStates {
