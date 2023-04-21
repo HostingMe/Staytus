@@ -13,18 +13,21 @@ Dockerfile: https://github.com/galexrt/container-staytus
 Before you start, you'll need a server running Docker.
 Learn more on how to install Docker on their website: https://docs.docker.com/get-docker/
 
-First pull the image of Staytus to your server using...
-```text
+First you'll need to pull the Staytus image from either Docker Hub or GitHub Packages.
+```shell
+docker pull ghcr.io/hostingme/staytus:main
+```
+```shell
 docker pull hostingme/staytus:main
 ```
 
 Next we'll need to create a network so Staytus and the database can communicate...
-```text
+```shell
 docker network create staytus
 ```
 
 Now we can create the database container. We're going to be using MariaDB for this...
-```text
+```shell
 docker run \
     -d \
     --name=database \
@@ -37,7 +40,7 @@ docker run \
 ```
 
 Lastly we can start the Staytus container with the following environments variables...
-```text
+```shell
 docker run \
     -d \
     --name=staytus \
@@ -64,7 +67,7 @@ docker rm staytus
 ```
 
 Now that we have stopped and removed the container we can rebuild it using the updated ports...
-```text
+```shell
 docker run \
     -d \
     --name=staytus \
@@ -90,7 +93,7 @@ Lets also create a directory where Caddy can store its data. We've called it `ca
 
 With the above config files created we can build our Caddy container.
 
-```text
+```shell
 docker run -d --name caddy \
     -p 80:80 \
     -p 443:443 \
